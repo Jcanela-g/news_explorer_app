@@ -1,0 +1,17 @@
+.header {
+  width: 100%;
+  background-image: url(../../vendor/images/dac0778e82f1206f112335e2ee4d938ba64f02d6.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}

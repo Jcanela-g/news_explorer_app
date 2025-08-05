@@ -1,19 +1,20 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import reactLogo from "../../assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import Header from "../Header/Header";
 
 function App() {
   return (
-    <>
-      <div classname="app">
+    <BrowserRouter>
+      <div className="app">
         <div className="app__content">
           <Header />
-          <Main />
-          <Footer />
+          {/* <Main />
+          <About />
+          <Footer /> */}
         </div>
       </div>
-    </>
+    </BrowserRouter>
   );
 }
 

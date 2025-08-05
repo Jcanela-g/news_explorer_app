@@ -1,0 +1,29 @@
+.navigation {
+  width: 100%;
+  display: flex;
+  padding: 0 104px 0;
+}
+
+.navigation__title {
+  margin: 30px auto 26px 0;
+}
+
+.navigation__link {
+  padding: 0;
+  margin: 30px 12px 26px 0;
+}
+
+.navigation__signin-btn {
+  margin: 19px 0 13px;
+  padding: 12px;
+  border: 1px;
+  border-radius: 100px;
+  width: 176px;
+  height: 48px;
+  border-color: transparent;
+}
+
+.navigation__link--active {
+  color: #007bff;
+  font-weight: 600;
+}
