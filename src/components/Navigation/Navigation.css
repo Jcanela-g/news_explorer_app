@@ -1,26 +1,64 @@
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("../../vendor/fonts/roboto-slab-700.woff2") format("woff2"),
+    url("../../vendor/fonts/roboto-slab-700.woff") format("woff");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../vendor/fonts/roboto-500.woff2") format("woff2"),
+    url("../../vendor/fonts/roboto-500.woff") format("woff");
+  font-weight: 500;
+}
+
 .navigation {
   width: 100%;
   display: flex;
-  padding: 0 104px 0;
+  /* padding: 0 104px 0; */
+  border-bottom: 1px solid rgba(209, 210, 214, 0.3);
 }
 
 .navigation__title {
   margin: 30px auto 26px 0;
+  padding-left: 104px;
+  font-family: "Roboto Slab";
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 700;
+  width: 200px;
 }
 
 .navigation__link {
   padding: 0;
-  margin: 30px 12px 26px 0;
+  margin: 30px 42px 26px 0;
+  font-family: "Roboto";
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navigation__link:hover {
+  cursor: inherit;
 }
 
 .navigation__signin-btn {
-  margin: 19px 0 13px;
+  margin: 19px 104px 13px 0;
   padding: 12px;
-  border: 1px;
+  border: 1px solid rgba(255, 255, 255, 1);
   border-radius: 100px;
   width: 176px;
   height: 48px;
-  border-color: transparent;
+  background: transparent;
+  font-family: "Roboto";
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
 }
 
 .navigation__link--active {

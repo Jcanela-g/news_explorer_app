@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
+import About from "../About/About";
 
 function App() {
   return (
@@ -9,9 +10,9 @@ function App() {
       <div className="app">
         <div className="app__content">
           <Header />
-          {/* <Main />
+          {/* <Main /> */}
           <About />
-          <Footer /> */}
+          {/* <Footer /> */}
         </div>
       </div>
     </BrowserRouter>

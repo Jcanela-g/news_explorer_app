@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../../vendor/fonts/roboto-400-regular.woff2") format("woff2"),
+    url("../../vendor/fonts/roboto-400-regular.woff") format("woff");
+  font-weight: 400;
+}
+
+.search-form {
+  display: flex;
+  width: 100%;
+  max-width: 608px;
+  background: #ffffff;
+  border-radius: 100px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 80px;
+}
+
+.search-form__input {
+  flex: 1;
+  border: none;
+  padding: 21px 0 21px 24px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: rgba(26, 27, 34, 1);
+
+  outline: none;
+}
+
+.search-form__input::placeholder {
+  color: rgba(182, 188, 191);
+  opacity: 1;
+}
+
+.search-form__button {
+  max-width: 168px;
+  width: 100%;
+  background: rgba(47, 113, 229, 1);
+  border: none;
+  border-radius: 100px;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  padding: 20px 56px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.search-form__button:hover {
+  background: rgba(52, 126, 255, 1);
+}
+
+.search-form__button:active {
+  background: rgba(42, 101, 204, 1);
+  outline: none;
+}
