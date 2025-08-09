@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("../../vendor/fonts/roboto-slab-400-regular.woff2") format("woff2"),
+    url("../../vendor/fonts/roboto-slab-400-regular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../vendor/fonts/roboto-400-regular.woff2") format("woff2"),
+    url("../../vendor/fonts/roboto-400-regular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto 500";
+  src: url("../../vendor/fonts/roboto-500.woff2") format("woff2"),
+    url("../../vendor/fonts/roboto-500.woff") format("woff");
+  font-weight: 500;
+}
+
+.main {
+  padding: 80px 104px;
+  max-width: 1440px;
+  background-color: rgba(245, 246, 247, 1);
+}
+
+.main__title {
+  font-family: "Roboto Slab";
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  margin: 0 0 64px;
+}
+
+.main__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.main__show-more {
+  display: block;
+  max-width: 288px;
+  width: 100%;
+  margin: 64px auto 0;
+  padding: 20px 0;
+  background: rgba(255, 255, 255, 1);
+  color: rgba(26, 27, 34, 1);
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+  font-family: "Roboto 500";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
