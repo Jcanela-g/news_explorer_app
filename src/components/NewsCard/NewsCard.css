@@ -1,32 +1,5 @@
-@font-face {
-  font-family: "Roboto Slab";
-  src: url("../../vendor/fonts/roboto-slab-400-regular.woff2") format("woff2"),
-    url("../../vendor/fonts/roboto-slab-400-regular.woff") format("woff");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url("../../vendor/fonts/roboto-400-regular.woff2") format("woff2"),
-    url("../../vendor/fonts/roboto-400-regular.woff") format("woff");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Roboto Slab 700";
-  src: url("../../vendor/fonts/roboto-slab-700.woff2") format("woff2"),
-    url("../../vendor/fonts/roboto-slab-700.woff") format("woff");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Source Sans Pro";
-  src: url("../../vendor/fonts/SourceCodePro-Regular.ttf") format("ttf");
-  font-weight: 400;
-}
-
 .news-card {
-  max-width: 400px;
+  /* max-width: 400px; */
   max-height: 576px;
   height: 100%;
   display: flex;
@@ -39,7 +12,7 @@
 
 .news-card:hover {
   cursor: pointer;
-  box-shadow: 0 -2px 58px 8px rgba(8, 29, 45, 0.1);
+  box-shadow: 0 8px 58px 0 rgba(8, 29, 45, 0.1);
 }
 
 .news-card__image {
@@ -58,7 +31,7 @@
 .news-card__date,
 .news-card__source {
   margin: 0;
-  font-family: "Roboto Slab 700";
+  font-family: "Roboto Slab", "Helvetica", "Arial", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
@@ -68,7 +41,7 @@
 }
 
 .news-card__date {
-  font-family: "Source Sans Pro";
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -76,7 +49,7 @@
 }
 
 .news-card__title {
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-size: 26px;
   line-height: 30px;
@@ -86,7 +59,7 @@
 
 .news-card__description {
   flex: 1;
-  font-family: "Roboto";
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;

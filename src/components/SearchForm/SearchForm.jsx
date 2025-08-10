@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "./SearchForm.css";
 
-export default function SearchForm() {
+export default function SearchForm({ onSearch }) {
   const [query, setQuery] = useState("");
 
   const handleSubmit = (e) => {

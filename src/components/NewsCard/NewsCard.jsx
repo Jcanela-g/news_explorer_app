@@ -4,7 +4,11 @@ import "./NewsCard.css";
 
 export default function NewsCard({ article, onSave }) {
   const { title, description, publishedAt, urlToImage, source } = article;
-  const date = new Date(publishedAt).toLocaleDateString();
+  const date = new Date(publishedAt).toLocaleDateString("default", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <article className="news-card">
@@ -17,6 +21,7 @@ export default function NewsCard({ article, onSave }) {
       </div>{" "}
       <button
         className="news-card__save"
+        aria-label="Save article"
         onClick={() => onSave(article)}
       ></button>
     </article>

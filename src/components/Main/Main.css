@@ -1,32 +1,13 @@
-@font-face {
-  font-family: "Roboto Slab";
-  src: url("../../vendor/fonts/roboto-slab-400-regular.woff2") format("woff2"),
-    url("../../vendor/fonts/roboto-slab-400-regular.woff") format("woff");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url("../../vendor/fonts/roboto-400-regular.woff2") format("woff2"),
-    url("../../vendor/fonts/roboto-400-regular.woff") format("woff");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Roboto 500";
-  src: url("../../vendor/fonts/roboto-500.woff2") format("woff2"),
-    url("../../vendor/fonts/roboto-500.woff") format("woff");
-  font-weight: 500;
-}
-
 .main {
   padding: 80px 104px;
   max-width: 1440px;
+
+  margin: 0 auto;
   background-color: rgba(245, 246, 247, 1);
 }
 
 .main__title {
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-size: 40px;
   line-height: 46px;
@@ -35,8 +16,8 @@
 
 .main__cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 .main__show-more {
@@ -50,8 +31,53 @@
   border: none;
   border-radius: 80px;
   cursor: pointer;
-  font-family: "Roboto 500";
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+}
+
+.main__status {
+  text-align: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #6b7280;
+  margin: 0;
+}
+
+.main__status-img {
+  padding-top: 6px;
+}
+
+.main__status--error {
+  color: #b91c1c;
+}
+
+.main__status-title {
+  font-family: "Roboto Slab", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  color: rgba(26, 27, 34, 1);
+  margin: 31.5px 0 16px;
+}
+
+.main__status-msg {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(182, 188, 191, 1);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .main__cards {
+    grid-template-columns: repeat(2, 1fr);
+  } /* 2 cols */
+}
+
+@media (min-width: 1200px) {
+  .main__cards {
+    grid-template-columns: repeat(3, 1fr);
+  } /* 3 cols */
 }

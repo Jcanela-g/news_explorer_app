@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { searchNews } from "../../utils/api";
+
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -7,12 +9,38 @@ import About from "../About/About";
 import Footer from "../Footer/Footer";
 
 function App() {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [hasSearched, setHasSearched] = useState(false);
+
+  const handleSearch = async (query) => {
+    setHasSearched(true);
+    setLoading(true);
+    setError(null);
+    try {
+      const results = await searchNews(query);
+      setArticles(results);
+    } catch (e) {
+      setArticles([]);
+      setError(e.message || "Request failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <BrowserRouter>
       <div className="app">
         <div className="app__content">
-          <Header />
-          <Main />
+          <Header onSearch={handleSearch} />
+          <Main
+            articles={articles}
+            loading={loading}
+            error={error}
+            hasSearched={hasSearched}
+            onSave={() => {}}
+          />
           <About />
           <Footer />
         </div>
