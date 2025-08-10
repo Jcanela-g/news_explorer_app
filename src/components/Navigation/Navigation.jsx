@@ -14,6 +14,15 @@ export default function Navigation() {
       >
         Home
       </NavLink>
+
+      <NavLink
+        to="/saved-news"
+        className={({ isActive }) =>
+          `navigation__link ${isActive ? "navigation__link--active" : ""}`
+        }
+      >
+        Saved articles
+      </NavLink>
       <button className="navigation__signin-btn">Sign in</button>
     </div>
   );

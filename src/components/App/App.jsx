@@ -5,6 +5,7 @@ import { searchNews } from "../../utils/api";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 
@@ -30,22 +31,40 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <div className="app">
-        <div className="app__content">
-          <Header onSearch={handleSearch} />
-          <Main
-            articles={articles}
-            loading={loading}
-            error={error}
-            hasSearched={hasSearched}
-            onSave={() => {}}
-          />
-          <About />
-          <Footer />
-        </div>
-      </div>
-    </BrowserRouter>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="app">
+            <div className="app__content">
+              <Header onSearch={handleSearch} showSearch />
+
+              <Main
+                articles={articles}
+                loading={loading}
+                error={error}
+                hasSearched={hasSearched}
+                onSave={() => {}}
+              />
+              <About />
+              <Footer />
+            </div>
+          </div>
+        }
+      />
+      <Route
+        path="/saved-news"
+        element={
+          <div className="app">
+            <div className="app__content">
+              <Header onSearch={handleSearch} showSearch={false} />
+              <SavedNewsPage />
+              <Footer />
+            </div>
+          </div>
+        }
+      />
+    </Routes>
   );
 }
 

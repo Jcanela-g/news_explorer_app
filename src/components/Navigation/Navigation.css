@@ -29,7 +29,7 @@
 }
 
 .navigation__link:hover {
-  cursor: inherit;
+  cursor: pointer;
 }
 
 .navigation__signin-btn {
