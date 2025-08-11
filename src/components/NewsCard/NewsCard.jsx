@@ -7,6 +7,7 @@ export default function NewsCard({
   onSave,
   onDelete,
   variant = "search",
+  isLoggedIn = false,
 }) {
   const { title, description, publishedAt, urlToImage, source, keyword } =
     article;
@@ -31,11 +32,24 @@ export default function NewsCard({
       </div>{" "}
       {/* Top-right control: save vs delete */}
       {variant === "search" ? (
-        <button
-          className="news-card__save"
-          aria-label="Save article"
-          onClick={() => onSave?.(article)}
-        />
+        // <button
+        //   className="news-card__save"
+        //   aria-label="Save article"
+        //   onClick={() => onSave?.(article)}
+        // />
+        <div className="news-card__action">
+          {!isLoggedIn && (
+            <span className="news-card__tooltip">Sign in to save articles</span>
+          )}
+          <button
+            className={`news-card__save ${
+              !isLoggedIn ? "news-card__save--disabled" : ""
+            }`}
+            aria-label={isLoggedIn ? "Save article" : "Sign in to save"}
+            aria-disabled={!isLoggedIn}
+            onClick={() => isLoggedIn && onSave?.(article)}
+          />
+        </div>
       ) : (
         <button
           className="news-card__delete"

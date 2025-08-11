@@ -32,7 +32,7 @@
   cursor: pointer;
 }
 
-.navigation__signin-btn {
+.navigation__btn {
   margin: 19px 104px 13px 0;
   padding: 12px;
   border: 1px solid rgba(255, 255, 255, 1);
@@ -45,6 +45,18 @@
   line-height: 24px;
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
+}
+
+.navigation__btn--signout {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 130px;
+}
+
+.navigation__logout-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .navigation__link--active {

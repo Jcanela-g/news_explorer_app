@@ -8,12 +8,23 @@ import Main from "../Main/Main";
 import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegistrationModal";
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [hasSearched, setHasSearched] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({ name: "Elise" });
+
+  const openLogin = () => setIsLoginOpen(true);
+  const closeLogin = () => setIsLoginOpen(false);
+  const openRegister = () => setIsRegisterOpen(true);
+  const closeRegister = () => setIsRegisterOpen(false);
 
   const handleSearch = async (query) => {
     setHasSearched(true);
@@ -30,6 +41,9 @@ function App() {
     }
   };
 
+  const handleSignIn = () => setIsLoggedIn(true);
+  const handleSignOut = () => setIsLoggedIn(false);
+
   return (
     <Routes>
       <Route
@@ -37,7 +51,15 @@ function App() {
         element={
           <div className="app">
             <div className="app__content">
-              <Header onSearch={handleSearch} showSearch />
+              <Header
+                onSearch={handleSearch}
+                isLoggedIn={isLoggedIn}
+                user={user}
+                //  onSignIn={openLogin}
+                onSignIn={handleSignIn} // for now use to toggle state
+                onSignOut={handleSignOut}
+                showSearch
+              />
 
               <Main
                 articles={articles}
@@ -45,9 +67,26 @@ function App() {
                 error={error}
                 hasSearched={hasSearched}
                 onSave={() => {}}
+                isLoggedIn={isLoggedIn}
               />
               <About />
               <Footer />
+              <LoginModal
+                isOpen={isLoginOpen}
+                onClose={closeLogin}
+                onSwitchToRegister={() => {
+                  closeLogin();
+                  openRegister();
+                }}
+              />
+              <RegisterModal
+                isOpen={isRegisterOpen}
+                onClose={closeRegister}
+                onSwitchToLogin={() => {
+                  closeRegister();
+                  openLogin();
+                }}
+              />
             </div>
           </div>
         }
@@ -57,7 +96,13 @@ function App() {
         element={
           <div className="app">
             <div className="app__content">
-              <Header onSearch={handleSearch} showSearch={false} />
+              <Header
+                onSearch={handleSearch}
+                showSearch={false}
+                isLoggedIn={isLoggedIn}
+                user={user}
+                onSignOut={handleSignOut}
+              />
               <SavedNewsPage />
               <Footer />
             </div>

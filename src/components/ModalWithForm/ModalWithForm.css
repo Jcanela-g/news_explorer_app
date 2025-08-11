@@ -1,0 +1,138 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.modal_open {
+  visibility: visible;
+}
+
+.modal__content {
+  background-color: rgba(255, 255, 255, 1);
+  position: relative;
+  padding: 34px 36px 28px;
+  max-width: 430px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.modal__close {
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  background: url("../../vendor/images/close.svg") center no-repeat;
+  border: none;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.modal__close:hover {
+  cursor: pointer;
+}
+
+.modal__title {
+  font-family: "Roboto";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+  color: rgba(26, 27, 34, 1);
+  margin: 0 0 22px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal__label {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: rgba(47, 113, 229, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin: 0 0 31px;
+  height: 47px;
+}
+
+.modal__label_type_normal {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.modal__input {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgb(0, 0, 0, 1);
+  border: none;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  width: 100%;
+  padding: 0;
+}
+
+.modal__legend {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+
+.modal__submit {
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(47, 113, 229, 1);
+  padding: 20px 115px;
+  /* max-width: 360px; */
+  width: 100%;
+  margin-top: 8px;
+  border: none;
+  border-radius: 50px;
+}
+
+.modal__submit:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.modal__switch {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  text-align: center;
+  display: flex;
+  margin-top: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__link {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: rgba(47, 113, 229, 1);
+  padding: 0;
+}

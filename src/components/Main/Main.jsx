@@ -10,6 +10,7 @@ export default function Main({
   error,
   hasSearched,
   onSave,
+  isLoggedIn,
 }) {
   const [visibleCount, setVisibleCount] = useState(3);
   const showMore = () =>
@@ -52,7 +53,7 @@ export default function Main({
           <h2 className="main__title">Search results</h2>
           <div className="main__cards">
             {articles.slice(0, visibleCount).map((article) => (
-              <NewsCard key={article.url} article={article} onSave={onSave} />
+              <NewsCard key={article.url} article={article} isLoggedIn={isLoggedIn} onSave={onSave} />
             ))}
           </div>
           {visibleCount < articles.length && (
