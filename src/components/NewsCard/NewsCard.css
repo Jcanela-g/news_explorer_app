@@ -1,5 +1,5 @@
 .news-card {
-  /* max-width: 400px; */
+  max-width: 400px;
   width: 100%;
   max-height: 576px;
   height: 100%;
@@ -91,11 +91,16 @@
 .news-card__tooltip {
   width: 182px;
   height: 40px;
-  padding: 8px 12px;
-  background: #fff;
-  color: #1a1b22;
+  padding: 11px 20px;
+  background: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);
   border-radius: 10px;
-  font: 400 12px/16px "Roboto";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   white-space: nowrap;
   visibility: hidden;
@@ -110,19 +115,32 @@
   transform: translateY(0);
 }
 
+.news-card__save,
+.news-card__delete {
+  pointer-events: auto;
+}
+
+.news-card__save_saved {
+  background-image: url("../../vendor/images/save-icon-marked.png");
+}
+
 .news-card__save:hover {
   background-image: url("../../vendor/images/save-icon-hover.png");
 }
 
 .news-card__chip {
   position: absolute;
-  top: 16px;
-  left: 16px;
-  padding: 8px 12px;
-  background: #fff;
-  color: #1a1b22;
+  top: 24px;
+  left: 24px;
+  padding: 8px 22px;
+  background: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);
   border-radius: 10px;
-  font: 500 14px/20px "Roboto";
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: capitalize;
+  line-height: 24px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
@@ -133,11 +151,14 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
+
 .news-card__delete:hover {
   background-image: url("../../vendor/images/delete-icon-hover.png");
+}
+
+.news-card__delete:hover + .news-card__tooltip {
+  opacity: 1;
+  transform: translateY(0);
 }

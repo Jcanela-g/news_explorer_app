@@ -20,6 +20,8 @@ function App() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({ name: "Elise" });
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [lastQuery, setLastQuery] = useState("");
 
   const openLogin = () => setIsLoginOpen(true);
   const closeLogin = () => setIsLoginOpen(false);
@@ -28,6 +30,7 @@ function App() {
 
   const handleSearch = async (query) => {
     setHasSearched(true);
+    setLastQuery(query);
     setLoading(true);
     setError(null);
     try {
@@ -42,7 +45,33 @@ function App() {
   };
 
   const handleSignIn = () => setIsLoggedIn(true);
-  const handleSignOut = () => setIsLoggedIn(false);
+  const handleSignOut = () => {
+    setIsLoggedIn(false);
+    setSavedArticles([]);
+  };
+
+  // const handleSave = (article) => {
+  //   if (!isLoggedIn) return; // guarded by tooltip anyway
+  //   setSavedArticles((prev) =>
+  //     prev.some((a) => a.url === article.url) ? prev : [...prev, article]
+  //   );
+  // };
+
+  const handleDelete = (article) => {
+    setSavedArticles((prev) => prev.filter((a) => a.url !== article.url));
+  };
+
+  const isSaved = (article) => savedArticles.some((a) => a.url === article.url); // unique by url
+
+  const handleSave = (article) => {
+    if (!isLoggedIn) return; // (or open login modal)
+    setSavedArticles(
+      (prev) =>
+        isSaved(article)
+          ? prev.filter((a) => a.url !== article.url) // remove
+          : [...prev, { ...article, keyword: lastQuery.trim() }] // add
+    );
+  };
 
   return (
     <Routes>
@@ -66,8 +95,9 @@ function App() {
                 loading={loading}
                 error={error}
                 hasSearched={hasSearched}
-                onSave={() => {}}
+                onSave={handleSave}
                 isLoggedIn={isLoggedIn}
+                isSaved={isSaved}
               />
               <About />
               <Footer />
@@ -103,7 +133,11 @@ function App() {
                 user={user}
                 onSignOut={handleSignOut}
               />
-              <SavedNewsPage />
+              <SavedNewsPage
+                savedArticles={savedArticles}
+                onDelete={handleDelete}
+                user={user}
+              />
               <Footer />
             </div>
           </div>

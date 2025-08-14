@@ -6,23 +6,19 @@ import "./Navigation.css";
 export default function Navigation({ onSignIn, onSignOut, isLoggedIn, user }) {
   return (
     <div className="navigation">
-      <h2 className="navigation__title">NewsExplorer</h2>
+      <NavLink to="/" className="navigation__title">
+        NewsExplorer
+      </NavLink>
       <NavLink
         to="/"
         className="navigation__link"
-        activeClassName="navigation__link--active"
-        exact
+        // activeClassName="navigation__link--active"
       >
         Home
       </NavLink>
 
       {isLoggedIn && (
-        <NavLink
-          to="/saved-news"
-          className={({ isActive }) =>
-            `navigation__link ${isActive ? "navigation__link--active" : ""}`
-          }
-        >
+        <NavLink to="/saved-news" className="navigation__link">
           Saved articles
         </NavLink>
       )}

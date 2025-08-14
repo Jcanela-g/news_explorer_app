@@ -2,88 +2,61 @@ import React from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import "./SavedNewsPage.css";
 
-export default function SavedNewsPage() {
+function getKeywordsSummary(articles) {
+  const counts = articles.reduce((acc, a) => {
+    const k = (a.keyword || "").trim();
+    if (k) acc[k] = (acc[k] || 0) + 1;
+    return acc;
+  }, {});
+  const sorted = Object.entries(counts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([k]) => k);
+
+  const [k1, k2, ...rest] = sorted;
+  return { k1, k2, restCount: rest.length };
+}
+
+export default function SavedNewsPage({ savedArticles = [], onDelete, user }) {
   const userName = "Elise";
-  const savedCount = 5;
-  const keywords = ["Nature", "Yellowstone", "Photography", "Parks"];
 
-  // Figma-style: first two keywords, then “and N other”
-  const top = keywords.slice(0, 2);
-  const restCount = Math.max(0, keywords.length - top.length);
+  // const keywords = ["Nature", "Yellowstone", "Photography", "Parks"];
 
-  const savedArticles = [
-    {
-      title: "Everyone Needs a Special 'Sit Spot' in Nature",
-      description: "Ever since I read Richard Louv’s influential book…",
-      publishedAt: "2020-11-04T00:00:00Z",
-      urlToImage: "../../vendor/images/image_08.jpg", // any local image
-      source: { name: "TREEHUGGER" },
-      url: "https://example.com/a1",
-      keyword: "Nature",
-    },
-    {
-      title: "Nature makes you better",
-      description: "We all know how good nature can make us feel…",
-      publishedAt: "2019-02-19T00:00:00Z",
-      urlToImage: "/vendor/images/image_09.jpg",
-      source: { name: "NATIONAL GEOGRAPHIC" },
-      url: "https://example.com/a2",
-      keyword: "Photography",
-    },
-    // {
-    //   title: "Nature makes you better",
-    //   description: "We all know how good nature can make us feel…",
-    //   publishedAt: "2019-02-19T00:00:00Z",
-    //   urlToImage: "/vendor/images/image_09.jpg",
-    //   source: { name: "NATIONAL GEOGRAPHIC" },
-    //   url: "https://example.com/a2",
-    //   keyword: "Photography",
-    // },
-    // {
-    //   title: "Nature makes you better",
-    //   description: "We all know how good nature can make us feel…",
-    //   publishedAt: "2019-02-19T00:00:00Z",
-    //   urlToImage: "/vendor/images/image_09.jpg",
-    //   source: { name: "NATIONAL GEOGRAPHIC" },
-    //   url: "https://example.com/a2",
-    //   keyword: "Photography",
-    // },
-    // {
-    //   title: "Nature makes you better",
-    //   description: "We all know how good nature can make us feel…",
-    //   publishedAt: "2019-02-19T00:00:00Z",
-    //   urlToImage: "/vendor/images/image_09.jpg",
-    //   source: { name: "NATIONAL GEOGRAPHIC" },
-    //   url: "https://example.com/a2",
-    //   keyword: "Photography",
-    // },
-    // add 2–3 more for layout
-  ];
+  // // Figma-style: first two keywords, then “and N other”
+  // const top = keywords.slice(0, 2);
+  // // const restCount = Math.max(0, keywords.length - top.length);
+
+  const savedCount = savedArticles.length;
+  const { k1, k2, restCount } = getKeywordsSummary(savedArticles);
 
   return (
     <section className="saved">
       <div className="saved__container">
         <p className="saved__subtitle">Saved articles</p>
         <h1 className="saved__title">
-          {userName}, you have {savedCount} saved articles
+          {userName}, you have {savedCount} saved article
+          {savedCount === 1 ? "" : "s"}
         </h1>
 
         <p className="saved__keywords">
           By keywords:&nbsp;
-          <span className="saved__keywords saved__keyword--em">{top[0]}</span>
-          {top[1] && (
+          {k1 && (
+            <span className="saved__keywords saved__keywords_keyword">
+              {k1}
+            </span>
+          )}
+          {k2 && (
             <>
               ,{" "}
-              <span className="saved__keywords saved__keyword--em">
-                {top[1]}
+              <span className="saved__keywords saved__keywords_keyword">
+                {k2}
               </span>
             </>
           )}
           {restCount > 0 && (
             <>
               , and{" "}
-              <span className="saved__keywords saved__keyword--em">
-                {restCount} other
+              <span className="saved__keywords saved__keywords_keyword">
+                {restCount} other{restCount > 1 ? "s" : ""}
               </span>
             </>
           )}
@@ -95,10 +68,8 @@ export default function SavedNewsPage() {
           <NewsCard
             key={a.url}
             article={a}
-            variant="saved" // <-- important
-            onDelete={() => {
-              /* stub */
-            }}
+            variant="saved"
+            onDelete={onDelete}
           />
         ))}
       </div>
