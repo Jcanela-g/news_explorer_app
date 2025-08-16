@@ -4,6 +4,9 @@ import logoutIcon from "../../vendor/images/logout.svg";
 import "./Navigation.css";
 
 export default function Navigation({ onSignIn, onSignOut, isLoggedIn, user }) {
+  const linkClass = ({ isActive }) =>
+    `navigation__link ${isActive ? "navigation__link--active" : ""}`;
+
   return (
     <div className="navigation">
       <NavLink to="/" className="navigation__title">
@@ -11,14 +14,15 @@ export default function Navigation({ onSignIn, onSignOut, isLoggedIn, user }) {
       </NavLink>
       <NavLink
         to="/"
-        className="navigation__link"
+        end
+        className={linkClass}
         // activeClassName="navigation__link--active"
       >
         Home
       </NavLink>
 
       {isLoggedIn && (
-        <NavLink to="/saved-news" className="navigation__link">
+        <NavLink to="/saved-news" className={linkClass}>
           Saved articles
         </NavLink>
       )}

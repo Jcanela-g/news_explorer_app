@@ -27,6 +27,22 @@
   color: rgba(255, 255, 255, 1);
   text-decoration: none;
   cursor: pointer;
+  position: relative;
+}
+
+.navigation__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -27px;
+  height: 3px;
+  width: 0px;
+  background: #fff;
+  border-radius: 2px;
+  transition: width 0.25s;
+}
+.navigation__link--active::after {
+  width: 100%;
 }
 
 .navigation__link:hover {
@@ -38,7 +54,7 @@
   padding: 12px;
   border: 1px solid rgba(255, 255, 255, 1);
   border-radius: 100px;
-  width: 176px;
+  max-width: 176px;
   height: 48px;
   background: transparent;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -56,12 +72,14 @@
   width: 130px;
 }
 
+.navigation__user {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .navigation__logout-icon {
   width: 24px;
   height: 24px;
-}
-
-.navigation__link--active {
-  color: #007bff;
-  font-weight: 600;
 }

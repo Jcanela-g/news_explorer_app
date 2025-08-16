@@ -5,15 +5,16 @@ export default function RegisterModal({
   isOpen,
   onClose,
   onSwitchToLogin,
-  onSuccess,
+  onSubmit,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const email = fd.get("email");
-    const name = fd.get("name") || "User";
-    // fake success; name can come later from backend
-    onSuccess?.({ name, email });
+    onSubmit?.({
+      name: fd.get("name"),
+      email: fd.get("email"),
+      password: fd.get("password"),
+    });
   };
 
   return (

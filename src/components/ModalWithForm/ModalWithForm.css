@@ -49,6 +49,11 @@
   margin: 0 0 22px;
 }
 
+.modal__title_success {
+  padding-top: 9px;
+  margin-bottom: 14px;
+}
+
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -135,4 +140,12 @@
   background-color: transparent;
   color: rgba(47, 113, 229, 1);
   padding: 0;
+}
+
+.modal__link_success {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  padding-bottom: 23px;
 }
