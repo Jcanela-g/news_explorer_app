@@ -17,7 +17,7 @@ function getKeywordsSummary(articles) {
 }
 
 export default function SavedNewsPage({ savedArticles = [], onDelete, user }) {
-  const userName = "Elise";
+  const userName = user?.name || "User";
 
   // const keywords = ["Nature", "Yellowstone", "Photography", "Parks"];
 

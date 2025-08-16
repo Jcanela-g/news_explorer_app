@@ -29,7 +29,7 @@ export default function NewsCard({
         <p className="news-card__date">{date}</p>
         <h3 className="news-card__title">{title}</h3>
         <p className="news-card__description">{description}</p>
-        <p className="news-card__source">{source.name}</p>
+        <p className="news-card__source">{source?.name}</p>
       </div>{" "}
       {/* Top-right control: save vs delete */}
       {variant === "search" ? (

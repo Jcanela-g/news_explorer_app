@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { searchNews } from "../../utils/api";
 
 import "./App.css";
@@ -44,11 +44,18 @@ function App() {
     }
   };
 
-  const handleSignIn = () => setIsLoggedIn(true);
+  const handleSignIn = () => setIsLoginOpen(true);
   const handleSignOut = () => {
     setIsLoggedIn(false);
     setSavedArticles([]);
   };
+
+  function handleAuthSuccess(profile) {
+    setIsLoggedIn(true);
+    setUser({ name: profile.name, email: profile.email });
+    closeLogin();
+    closeRegister();
+  }
 
   // const handleSave = (article) => {
   //   if (!isLoggedIn) return; // guarded by tooltip anyway
@@ -108,6 +115,7 @@ function App() {
                   closeLogin();
                   openRegister();
                 }}
+                onSuccess={handleAuthSuccess}
               />
               <RegisterModal
                 isOpen={isRegisterOpen}
@@ -116,6 +124,7 @@ function App() {
                   closeRegister();
                   openLogin();
                 }}
+                onSuccess={handleAuthSuccess}
               />
             </div>
           </div>

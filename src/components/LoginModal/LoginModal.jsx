@@ -1,11 +1,19 @@
 import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-export default function LoginModal({ isOpen, onClose, onSwitchToRegister }) {
+export default function LoginModal({
+  isOpen,
+  onClose,
+  onSwitchToRegister,
+  onSuccess,
+}) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // no real auth yet — just close for now
-    onClose?.();
+    const fd = new FormData(e.currentTarget);
+    const email = fd.get("email");
+    const password = fd.get("password");
+    // fake success; name can come later from backend
+    onSuccess?.({ name: "User", email });
   };
 
   return (

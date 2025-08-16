@@ -3,12 +3,18 @@ import "./SearchForm.css";
 
 export default function SearchForm({ onSearch }) {
   const [query, setQuery] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query.trim()) {
-      onSearch(query);
+    if (!query.trim()) {
+      setError("Please enter a keyword");
+      return;
     }
+
+    setError("");
+
+    onSearch(query);
   };
 
   return (
@@ -20,6 +26,7 @@ export default function SearchForm({ onSearch }) {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Enter topic"
       />
+      {error && <span className="search-form__error">{error}</span>}
       <button type="submit" className="search-form__button">
         Search
       </button>
