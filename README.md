@@ -32,4 +32,8 @@ Responsive header, mobile nav sheet, and mobile-friendly modals
 
 ## Future goals
 
-create backend server and make the site fully functional
+Create the backend server and make the site fully functional
+
+## Github pages link
+
+-[Deployment Link](https://jcanela-g.github.io/news_explorer_app/)
