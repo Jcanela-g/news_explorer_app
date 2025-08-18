@@ -85,6 +85,30 @@
   height: 24px;
 }
 
+.navigation--home .navigation__title,
+.navigation--home .navigation__link,
+.navigation--home .navigation__btn {
+  color: #fff;
+}
+.navigation--home .navigation__btn {
+  border-color: #fff;
+}
+.navigation--home .navigation__link::after {
+  background: #fff;
+}
+
+.navigation--saved .navigation__title,
+.navigation--saved .navigation__link,
+.navigation--saved .navigation__btn {
+  color: #1a1b22;
+}
+.navigation--saved .navigation__btn {
+  border-color: #1a1b22;
+}
+.navigation--saved .navigation__link::after {
+  background: #1a1b22;
+}
+
 /* --- hamburger button (hidden on desktop) --- */
 .navigation__menuBtn {
   display: none;
@@ -95,6 +119,10 @@
   height: 24px;
   padding: 0;
   cursor: pointer;
+}
+
+.navigation__menuBtn--saved {
+  background-image: url("../../vendor/images/menu-dark.png");
 }
 
 /* --- mobile sheet & backdrop --- */

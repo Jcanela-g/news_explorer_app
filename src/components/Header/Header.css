@@ -1,10 +1,17 @@
 .header {
   width: 100%;
+}
+
+.header--home {
   background-image: url(../../vendor/images/dac0778e82f1206f112335e2ee4d938ba64f02d6.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+}
+
+.header--saved {
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .header__container {

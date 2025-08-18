@@ -219,6 +219,7 @@ function App() {
             <div className="app">
               <div className="app__content">
                 <Header
+                  isMain={false}
                   onSearch={handleSearch}
                   showSearch={false}
                   isLoggedIn={isLoggedIn}
