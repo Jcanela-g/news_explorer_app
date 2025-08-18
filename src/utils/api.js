@@ -5,18 +5,12 @@ import {
   getDateRange,
 } from "./constants";
 
-/**
- * Search news articles for a query over the last 7 days.
- * Returns the raw array of articles from NewsAPI.
- * (We can normalize the shape later if needed.)
- */
-export async function searchNews(query) {
+export function searchNews(query) {
   if (!query || !query.trim()) {
-    throw new Error("Please enter a keyword");
+    return Promise.reject(new Error("Please enter a keyword"));
   }
 
   const { from, to } = getDateRange(7);
-
   const params = new URLSearchParams({
     q: query.trim(),
     from,
@@ -27,23 +21,22 @@ export async function searchNews(query) {
 
   const url = `${NEWS_API_BASE_URL}?${params.toString()}`;
 
-  const res = await fetch(url);
-  if (!res.ok) {
-    // Try to surface a helpful message
-    let msg = `Request failed: ${res.status}`;
-    try {
-      const text = await res.text();
-      if (text) msg += ` - ${text}`;
-    } catch {}
-    throw new Error(msg);
-  }
-
-  const data = await res.json();
-
-  // NewsAPI returns { status: 'ok'|'error', totalResults, articles }
-  if (data.status !== "ok") {
-    throw new Error(data.message || "News API error");
-  }
-
-  return Array.isArray(data.articles) ? data.articles : [];
+  return fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        return res.text().then((text) => {
+          const msg = `Request failed: ${res.status}${
+            text ? ` - ${text}` : ""
+          }`;
+          return Promise.reject(new Error(msg));
+        });
+      }
+      return res.json();
+    })
+    .then((data) => {
+      if (data.status !== "ok") {
+        return Promise.reject(new Error(data.message || "News API error"));
+      }
+      return Array.isArray(data.articles) ? data.articles : [];
+    });
 }

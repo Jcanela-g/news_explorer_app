@@ -10,7 +10,6 @@ export default function ModalWithForm({
   onSubmit,
   footer,
 }) {
-  // 1) Close on Escape + lock body scroll while open
   useEffect(() => {
     if (!isOpen) return;
 
@@ -26,11 +25,8 @@ export default function ModalWithForm({
     };
   }, [isOpen, onClose]);
 
-  // 2) Optional: accessible title id
   const titleId = useId();
 
-  // 3) Unmount when closed (cleaner tab order).
-  // If you prefer CSS transitions, keep it mounted and toggle a class instead.
   if (!isOpen) return null;
 
   const stop = (e) => e.stopPropagation();
@@ -38,7 +34,7 @@ export default function ModalWithForm({
   return (
     <div
       className="modal modal_open"
-      onClick={onClose} // overlay click closes
+      onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby={title ? titleId : undefined}

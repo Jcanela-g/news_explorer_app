@@ -21,7 +21,6 @@ export default function NewsCard({
   return (
     <article className="news-card">
       <img src={urlToImage} alt={title} className="news-card__image" />
-      {/* Keyword chip (only on saved page) */}
       {variant === "saved" && keyword && (
         <span className="news-card__chip">{keyword}</span>
       )}
@@ -31,7 +30,6 @@ export default function NewsCard({
         <p className="news-card__description">{description}</p>
         <p className="news-card__source">{source?.name}</p>
       </div>{" "}
-      {/* Top-right control: save vs delete */}
       {variant === "search" ? (
         <div className="news-card__action">
           {!isLoggedIn && (

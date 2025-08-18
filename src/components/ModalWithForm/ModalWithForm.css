@@ -41,7 +41,7 @@
 }
 
 .modal__title {
-  font-family: "Roboto";
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 900;
   font-size: 24px;
   line-height: 100%;
@@ -61,7 +61,7 @@
 }
 
 .modal__label {
-  font-family: "Inter";
+  font-family: "Inter", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 100%;
@@ -74,7 +74,7 @@
 }
 
 .modal__input {
-  font-family: "Inter";
+  font-family: "Inter", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -87,7 +87,7 @@
 }
 
 .modal__submit {
-  font-family: "Roboto";
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
@@ -108,7 +108,7 @@
 }
 
 .modal__switch {
-  font-family: "Inter";
+  font-family: "Inter", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -128,7 +128,7 @@
 }
 
 .modal__link_success {
-  font-family: "Inter";
+  font-family: "Inter", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;

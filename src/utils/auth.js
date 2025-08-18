@@ -16,7 +16,6 @@ export const register = (username, password, email) => {
 
 export const authorize = (identifier, password) => {
   return new Promise((resolve) => {
-    // identifier can be username or email; your demo used "identifier"
     const user = {
       _id: fakeId(),
       username: identifier,

@@ -1,7 +1,6 @@
 .navigation {
   width: 100%;
   display: flex;
-  /* padding: 0 104px 0; */
   border-bottom: 1px solid rgba(209, 210, 214, 0.3);
 }
 
@@ -37,7 +36,7 @@
   bottom: -27px;
   height: 3px;
   width: 0px;
-  background: #fff;
+  background: rgba(255, 255, 255, 1);
   border-radius: 2px;
   transition: width 0.25s;
 }
@@ -88,28 +87,27 @@
 .navigation--home .navigation__title,
 .navigation--home .navigation__link,
 .navigation--home .navigation__btn {
-  color: #fff;
+  color: rgba(255, 255, 255, 1);
 }
 .navigation--home .navigation__btn {
-  border-color: #fff;
+  border-color: rgba(255, 255, 255, 1);
 }
 .navigation--home .navigation__link::after {
-  background: #fff;
+  background: rgba(255, 255, 255, 1);
 }
 
 .navigation--saved .navigation__title,
 .navigation--saved .navigation__link,
 .navigation--saved .navigation__btn {
-  color: #1a1b22;
+  color: rgba(26, 27, 34, 1);
 }
 .navigation--saved .navigation__btn {
-  border-color: #1a1b22;
+  border-color: rgba(209, 210, 214, 1);
 }
 .navigation--saved .navigation__link::after {
-  background: #1a1b22;
+  background: rgba(26, 27, 34, 1);
 }
 
-/* --- hamburger button (hidden on desktop) --- */
 .navigation__menuBtn {
   display: none;
   background-image: url("../../vendor/images/menu.png");
@@ -125,7 +123,6 @@
   background-image: url("../../vendor/images/menu-dark.png");
 }
 
-/* --- mobile sheet & backdrop --- */
 .navigation__backdrop {
   position: fixed;
   inset: 0;
@@ -135,7 +132,7 @@
 .navigation__sheet {
   position: fixed;
   inset: 0;
-  color: #fff;
+  color: rgba(255, 255, 255, 1);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -149,7 +146,7 @@
   background-color: rgba(26, 27, 34, 1);
 }
 .navigation__logo {
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", "Helvetica", "Arial", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
@@ -175,7 +172,7 @@
 .navigation__mobileLink {
   color: rgba(255, 255, 255, 1);
   text-decoration: none;
-  font-family: "Roboto";
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 56px;

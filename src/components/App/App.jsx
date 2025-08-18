@@ -1,11 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { searchNews } from "../../utils/api";
 import * as auth from "../../utils/auth";
 import { setToken, getToken, removeToken } from "../../utils/token";
 import { getItems, saveArticle, deleteArticleById } from "../../utils/savedApi";
-
-// import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -38,20 +36,19 @@ function App() {
   const openRegSuccess = () => setIsRegSuccessOpen(true);
   const closeRegSuccess = () => setIsRegSuccessOpen(false);
 
-  const handleSearch = async (query) => {
+  const handleSearch = (query) => {
     setHasSearched(true);
     setLastQuery(query);
     setLoading(true);
     setError(null);
-    try {
-      const results = await searchNews(query);
-      setArticles(results);
-    } catch (e) {
-      setArticles([]);
-      setError(e.message || "Request failed");
-    } finally {
-      setLoading(false);
-    }
+
+    searchNews(query)
+      .then((results) => setArticles(results))
+      .catch((e) => {
+        setArticles([]);
+        setError(e.message || "Request failed");
+      })
+      .finally(() => setLoading(false));
   };
 
   const handleSignIn = () => setIsLoginOpen(true);
@@ -62,81 +59,75 @@ function App() {
     setSavedArticles([]);
   };
 
-  // function handleAuthSuccess(profile) {
-  //   setIsLoggedIn(true);
-  //   setUser({ name: profile.name, email: profile.email });
-  //   closeLogin();
-  //   closeRegister();
-  // }
-
-  async function handleLoginSubmit({ email, password }) {
-    const { jwt, user } = await auth.authorize(email, password);
-    setToken(jwt);
-    setIsLoggedIn(true);
-    setUser({ name: user.username || "User", email: user.email });
-    const items = await getItems();
-    setSavedArticles(items);
-    setIsLoginOpen(false);
+  function handleLoginSubmit({ email, password }) {
+    auth
+      .authorize(email, password)
+      .then(({ jwt, user }) => {
+        setToken(jwt);
+        setIsLoggedIn(true);
+        setUser({ name: user.username || "User", email: user.email });
+        return getItems();
+      })
+      .then((items) => {
+        setSavedArticles(items);
+        setIsLoginOpen(false);
+      })
+      .catch((err) => {
+        alert(err?.message || "Login failed");
+      });
   }
 
-  async function handleRegisterSubmit({ name, email, password }) {
-    // const { jwt, user } = await auth.register(name || "User", password, email);
-    // setToken(jwt);
-    // setIsLoggedIn(true);
-    // setUser({ name: user.username || name || "User", email: user.email });
-    // const items = await getItems();
-    // setSavedArticles(items);
-    // setIsRegisterOpen(false);
-    try {
-      // you can still call the stub to “create” the user, but ignore the jwt
-      await auth.register(name || "User", password, email);
-      closeRegister();
-      openRegSuccess(); // show “Registration successfully completed!”
-    } catch (err) {
-      alert(err.message || "Registration failed");
+  function handleRegisterSubmit({ name, email, password }) {
+    auth
+      .register(name || "User", password, email)
+      .then(() => {
+        closeRegister();
+        openRegSuccess();
+      })
+      .catch((err) => {
+        alert(err?.message || "Registration failed");
+      });
+  }
+
+  function handleDelete(article) {
+    const removeById = () =>
+      setSavedArticles((prev) => prev.filter((a) => a._id !== article._id));
+
+    const removeByUrl = () =>
+      setSavedArticles((prev) => prev.filter((a) => a.url !== article.url));
+
+    if (article?._id) {
+      deleteArticleById(article._id)
+        .then(removeById)
+        .catch(() => {});
+    } else {
+      // fallback for items saved without an _id (match by URL)
+      removeByUrl();
     }
   }
 
-  // const handleSave = (article) => {
-  //   if (!isLoggedIn) return; // guarded by tooltip anyway
-  //   setSavedArticles((prev) =>
-  //     prev.some((a) => a.url === article.url) ? prev : [...prev, article]
-  //   );
-  // };
+  const isSaved = (article) => savedArticles.some((a) => a.url === article.url);
 
-  // const handleDelete = (article) => {
-  //   setSavedArticles((prev) => prev.filter((a) => a.url !== article.url));
-  // };
-
-  async function handleDelete(article) {
-    if (article?._id) await deleteArticleById(article._id);
-    setSavedArticles((prev) => prev.filter((a) => a._id !== article._id));
-  }
-
-  const isSaved = (article) => savedArticles.some((a) => a.url === article.url); // unique by url
-
-  // const handleSave = (article) => {
-  //   if (!isLoggedIn) return; // (or open login modal)
-  //   setSavedArticles(
-  //     (prev) =>
-  //       isSaved(article)
-  //         ? prev.filter((a) => a.url !== article.url) // remove
-  //         : [...prev, { ...article, keyword: lastQuery.trim() }] // add
-  //   );
-  // };
-
-  async function handleSave(article) {
+  function handleSave(article) {
     if (!isLoggedIn) return;
+
     if (isSaved(article)) {
       const doc = savedArticles.find((a) => a.url === article.url);
-      if (doc?._id) await deleteArticleById(doc._id);
-      setSavedArticles((prev) => prev.filter((a) => a.url !== article.url));
+      if (doc?._id) {
+        deleteArticleById(doc._id)
+          .then(() =>
+            setSavedArticles((prev) =>
+              prev.filter((a) => a.url !== article.url)
+            )
+          )
+          .catch(() => {});
+      } else {
+        setSavedArticles((prev) => prev.filter((a) => a.url !== article.url));
+      }
     } else {
-      const created = await saveArticle({
-        ...article,
-        keyword: lastQuery.trim(),
-      });
-      setSavedArticles((prev) => [...prev, created]);
+      saveArticle({ ...article, keyword: lastQuery.trim() })
+        .then((created) => setSavedArticles((prev) => [...prev, created]))
+        .catch(() => {});
     }
   }
 
@@ -165,8 +156,7 @@ function App() {
                 onSearch={handleSearch}
                 isLoggedIn={isLoggedIn}
                 user={user}
-                //  onSignIn={openLogin}
-                onSignIn={handleSignIn} // for now use to toggle state
+                onSignIn={handleSignIn}
                 onSignOut={handleSignOut}
                 showSearch
               />

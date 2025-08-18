@@ -16,7 +16,6 @@ export default function Navigation({
   const close = () => setOpen(false);
   const logoutSrc = theme === "home" ? logoutIcon : logoutIconDark;
 
-  // ESC closes + lock body scroll while open
   useEffect(() => {
     if (!open) return;
     const onEsc = (e) => e.key === "Escape" && close();

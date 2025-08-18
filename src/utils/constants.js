@@ -6,7 +6,6 @@ export const NEWS_API_BASE_URL = import.meta.env.PROD
   ? "https://nomoreparties.co/news/v2/everything"
   : "https://newsapi.org/v2/everything";
 
-// helper for 7-day window
 export function getDateRange(days = 7) {
   const to = new Date();
   const from = new Date();

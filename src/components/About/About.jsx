@@ -1,5 +1,5 @@
 import "./About.css";
-import defaultImg from "../../vendor/images/default-img.jpg";
+import defaultImg from "../../vendor/images/author-img.jpg";
 
 export default function About() {
   return (
