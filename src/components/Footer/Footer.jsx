@@ -31,7 +31,7 @@ export default function Footer() {
         <ul className="footer__social">
           <li>
             <a
-              href="https://github.com/"
+              href="https://github.com/Jcanela-g"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__social-link"

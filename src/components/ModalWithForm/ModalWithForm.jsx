@@ -32,23 +32,12 @@ export default function ModalWithForm({
   const stop = (e) => e.stopPropagation();
 
   return (
-    <div
-      className="modal modal_open"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={title ? titleId : undefined}
-    >
+    <div className="modal modal_open" onClick={onClose}>
       <div className="modal__content" onClick={stop}>
         <h2 id={titleId} className="modal__title">
           {title}
         </h2>
-        <button
-          type="button"
-          onClick={onClose}
-          className="modal__close"
-          aria-label="Close"
-        />
+        <button type="button" onClick={onClose} className="modal__close" />
         <form onSubmit={onSubmit} className="modal__form">
           {children}
           <button type="submit" className="modal__submit">

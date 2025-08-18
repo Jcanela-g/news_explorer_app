@@ -39,8 +39,6 @@ export default function NewsCard({
             className={`news-card__save ${
               isSaved ? "news-card__save_saved" : ""
             }`}
-            aria-label={isLoggedIn ? "Save article" : "Sign in to save"}
-            aria-disabled={!isLoggedIn}
             onClick={() => isLoggedIn && onSave?.(article)}
           />
         </div>
@@ -50,7 +48,6 @@ export default function NewsCard({
 
           <button
             className="news-card__delete"
-            aria-label="Remove from saved"
             onClick={() => onDelete?.(article)}
           />
         </div>

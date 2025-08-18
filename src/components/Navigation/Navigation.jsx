@@ -51,13 +51,11 @@ export default function Navigation({
           <button
             className="navigation__btn navigation__btn--signout"
             onClick={onSignOut}
-            aria-label="Log out"
           >
             <span className="navigation__user">{user?.name || "User"}</span>
             <img
               src={logoutSrc}
               alt="logout"
-              aria-hidden="true"
               className="navigation__logout-icon"
             />
           </button>
@@ -71,9 +69,6 @@ export default function Navigation({
           className={`navigation__menuBtn ${
             theme === "saved" ? "navigation__menuBtn--saved" : ""
           }`}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
           onClick={toggle}
         ></button>
       </div>
@@ -81,19 +76,10 @@ export default function Navigation({
       {open && (
         <>
           <div className="navigation__backdrop" onClick={close} />
-          <div
-            className="navigation__sheet"
-            id="mobile-menu"
-            role="dialog"
-            aria-modal="true"
-          >
+          <div className="navigation__sheet" id="mobile-menu" role="dialog">
             <div className="navigation__sheetHeader">
               <span className="navigation__logo">NewsExplorer</span>
-              <button
-                className="navigation__closeBtn"
-                aria-label="Close menu"
-                onClick={close}
-              />
+              <button className="navigation__closeBtn" onClick={close} />
             </div>
 
             <nav className="navigation__sheetBody">
@@ -129,8 +115,7 @@ export default function Navigation({
                   </span>
                   <img
                     src={logoutSrc}
-                    alt=""
-                    aria-hidden="true"
+                    alt="logout button"
                     className="navigation__logout-icon"
                   />
                 </button>
