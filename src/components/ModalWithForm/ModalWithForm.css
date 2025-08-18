@@ -73,12 +73,6 @@
   height: 47px;
 }
 
-.modal__label_type_normal {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
 .modal__input {
   font-family: "Inter";
   font-weight: 400;
@@ -92,14 +86,6 @@
   padding: 0;
 }
 
-.modal__legend {
-  font-family: "Cabinet Grotesk";
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 12px;
-}
-
 .modal__submit {
   font-family: "Roboto";
   font-weight: 500;
@@ -110,7 +96,6 @@
   color: rgba(255, 255, 255, 1);
   background-color: rgba(47, 113, 229, 1);
   padding: 20px 115px;
-  /* max-width: 360px; */
   width: 100%;
   margin-top: 8px;
   border: none;
@@ -148,4 +133,53 @@
   font-size: 18px;
   line-height: 100%;
   padding-bottom: 23px;
+}
+
+@media (max-width: 650px) {
+  .modal {
+    align-items: flex-start;
+    justify-content: stretch;
+    overflow: auto;
+    padding-top: 56px;
+  }
+
+  .modal__content {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    border-radius: 20px 20px 0 0;
+    padding: 16px;
+    box-sizing: border-box;
+    min-height: 380px;
+  }
+
+  .modal__close {
+    top: -37px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    background-size: 24px 24px;
+  }
+
+  .modal__title {
+    margin: 0 0 18px;
+  }
+
+  .modal__label {
+    margin: 0 0 30px;
+    gap: 8px;
+  }
+
+  .modal__input {
+    font-size: 16px;
+  }
+
+  .modal__submit {
+    padding: 16px;
+    margin-top: 0;
+  }
+
+  .modal__switch {
+    margin-top: 14px;
+  }
 }

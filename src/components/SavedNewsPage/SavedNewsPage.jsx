@@ -19,12 +19,6 @@ function getKeywordsSummary(articles) {
 export default function SavedNewsPage({ savedArticles = [], onDelete, user }) {
   const userName = user?.name || "User";
 
-  // const keywords = ["Nature", "Yellowstone", "Photography", "Parks"];
-
-  // // Figma-style: first two keywords, then “and N other”
-  // const top = keywords.slice(0, 2);
-  // // const restCount = Math.max(0, keywords.length - top.length);
-
   const savedCount = savedArticles.length;
   const { k1, k2, restCount } = getKeywordsSummary(savedArticles);
 

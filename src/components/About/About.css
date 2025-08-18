@@ -15,6 +15,7 @@
 .about__information-container {
   max-width: 600px;
 }
+
 .about__title {
   font-family: "Roboto Slab", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
@@ -29,4 +30,50 @@
   font-size: 18px;
   line-height: 24px;
   margin: 0;
+}
+
+@media screen and (max-width: 850px) {
+  .about__container {
+    gap: 32px;
+  }
+
+  .about__img {
+    width: 232px;
+    height: 232px;
+    margin: 61px 0;
+  }
+
+  .about__information-container {
+    max-width: 424px;
+  }
+
+  .about__title {
+    font-size: 30px;
+    line-height: 40px;
+    margin: 40px 0 16px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .about__container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 16px 128px;
+    align-items: center;
+  }
+
+  .about__img {
+    width: 272px;
+    height: 272px;
+    margin: 0;
+    padding: 0 8px 0;
+  }
+
+  .about__information-container {
+    max-width: 288px;
+  }
+
+  .about__title {
+    margin-top: 0;
+  }
 }

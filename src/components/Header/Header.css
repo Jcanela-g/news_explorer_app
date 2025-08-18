@@ -35,3 +35,37 @@
   max-width: 608px;
   margin: 0 auto 88px;
 }
+
+@media screen and (max-width: 850px) {
+  .header__container {
+    max-width: 768px;
+  }
+
+  .header__title {
+    font-size: 36px;
+    line-height: 40px;
+    max-width: 385px;
+    margin: 38px 220px 16px 163px;
+  }
+
+  .header__caption {
+    max-width: 452px;
+    margin: 0 156px 48px 160px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .header__container {
+    max-width: 320px;
+  }
+
+  .header__title {
+    max-width: 385px;
+    margin: 30px 16px 16px 19px;
+  }
+
+  .header__caption {
+    max-width: 288px;
+    margin: 0 16px 122px;
+  }
+}
