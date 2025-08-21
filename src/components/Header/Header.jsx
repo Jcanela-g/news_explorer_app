@@ -14,7 +14,7 @@ export default function Header({
   const theme = isMain ? "home" : "saved";
 
   return (
-    <header className={`header ${isMain ? "header--home" : "header--saved"}`}>
+    <header className={`header ${isMain ? "header__home" : "header__saved"}`}>
       <div className="header__container">
         <Navigation
           theme={theme}

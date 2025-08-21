@@ -29,11 +29,11 @@ export default function Navigation({
   }, [open]);
 
   const linkClass = ({ isActive }) =>
-    `navigation__link ${isActive ? "navigation__link--active" : ""}`;
+    `navigation__link ${isActive ? "navigation__link_active" : ""}`;
 
   return (
     <>
-      <div className={`navigation navigation--${theme}`}>
+      <div className={`navigation navigation__${theme}`}>
         <NavLink to="/" className="navigation__title">
           NewsExplorer
         </NavLink>
@@ -49,7 +49,7 @@ export default function Navigation({
 
         {isLoggedIn ? (
           <button
-            className="navigation__btn navigation__btn--signout"
+            className="navigation__btn navigation__btn_signout"
             onClick={onSignOut}
           >
             <span className="navigation__user">{user?.name || "User"}</span>
@@ -66,8 +66,8 @@ export default function Navigation({
         )}
 
         <button
-          className={`navigation__menuBtn ${
-            theme === "saved" ? "navigation__menuBtn--saved" : ""
+          className={`navigation__menu-btn ${
+            theme === "saved" ? "navigation__menu-btn_saved" : ""
           }`}
           onClick={toggle}
         ></button>
@@ -77,16 +77,16 @@ export default function Navigation({
         <>
           <div className="navigation__backdrop" onClick={close} />
           <div className="navigation__sheet" id="mobile-menu" role="dialog">
-            <div className="navigation__sheetHeader">
+            <div className="navigation__sheet-header">
               <span className="navigation__logo">NewsExplorer</span>
-              <button className="navigation__closeBtn" onClick={close} />
+              <button className="navigation__close-btn" onClick={close} />
             </div>
 
-            <nav className="navigation__sheetBody">
+            <nav className="navigation__sheet-body">
               <NavLink
                 to="/"
                 end
-                className="navigation__mobileLink"
+                className="navigation__mobile-link"
                 onClick={close}
               >
                 Home
@@ -95,7 +95,7 @@ export default function Navigation({
               {isLoggedIn && (
                 <NavLink
                   to="/saved-news"
-                  className="navigation__mobileLink"
+                  className="navigation__mobile-link"
                   onClick={close}
                 >
                   Saved articles
@@ -104,7 +104,7 @@ export default function Navigation({
 
               {isLoggedIn ? (
                 <button
-                  className="navigation__mobileBtn navigation__mobileBtn--outline"
+                  className="navigation__mobile-btn navigation__mobile-btn_outline"
                   onClick={() => {
                     close();
                     onSignOut?.();
@@ -121,7 +121,7 @@ export default function Navigation({
                 </button>
               ) : (
                 <button
-                  className="navigation__mobileBtn"
+                  className="navigation__mobile-btn"
                   onClick={() => {
                     close();
                     onSignIn?.();

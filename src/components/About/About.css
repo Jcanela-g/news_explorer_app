@@ -41,6 +41,7 @@
     width: 232px;
     height: 232px;
     margin: 61px 0;
+    object-fit: cover;
   }
 
   .about__information-container {

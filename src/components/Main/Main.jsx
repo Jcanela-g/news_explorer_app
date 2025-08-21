@@ -33,7 +33,7 @@ export default function Main({
       )}
 
       {!loading && error && (
-        <div className="main__status main__status--error">
+        <div className="main__status main__status-error">
           Sorry, something went wrong during the request. Please try again
           later.
         </div>

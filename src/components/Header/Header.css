@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.header--home {
+.header__home {
   background-image: url(../../vendor/images/dac0778e82f1206f112335e2ee4d938ba64f02d6.jpg);
   background-size: cover;
   background-position: center;
@@ -10,7 +10,7 @@
   position: relative;
 }
 
-.header--saved {
+.header__saved {
   background-color: rgba(255, 255, 255, 1);
 }
 
