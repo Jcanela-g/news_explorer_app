@@ -1,20 +1,18 @@
-import { setToken } from "./token";
-
 const fakeId = () =>
   Array.from({ length: 24 }, () =>
     Math.floor(Math.random() * 16).toString(16)
   ).join("");
 
 export const register = (username, password, email) => {
+  void password;
   return new Promise((resolve) => {
     const user = { _id: fakeId(), username, email };
-    const jwt = `fake-${fakeId()}`;
-    setToken(jwt);
-    resolve({ jwt, user });
+    resolve({ user });
   });
 };
 
 export const authorize = (identifier, password) => {
+  void password;
   return new Promise((resolve) => {
     const user = {
       _id: fakeId(),

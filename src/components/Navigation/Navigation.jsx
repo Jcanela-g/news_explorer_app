@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logoutIcon from "../../vendor/images/logout.svg";
 import logoutIconDark from "../../vendor/images/logout-dark.svg";

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import githubIcon from "../../vendor/images/github.svg";
 import facebookIcon from "../../vendor/images/fb.svg";
