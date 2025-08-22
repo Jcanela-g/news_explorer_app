@@ -83,6 +83,7 @@
     border-radius: unset;
     box-shadow: none;
     margin-bottom: 32px;
+    align-items: center;
   }
 
   .search-form__input {

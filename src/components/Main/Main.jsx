@@ -41,7 +41,11 @@ export default function Main({
 
       {!loading && !error && hasSearched && articles.length === 0 && (
         <div className="main__status">
-          <img src={notFoundImage} alt="" className="main__status-img" />
+          <img
+            src={notFoundImage}
+            alt="not found image"
+            className="main__status-img"
+          />
           <h3 className="main__status-title">Nothing Found</h3>
           <p className="main__status-msg">
             Sorry, but nothing matched your search terms.

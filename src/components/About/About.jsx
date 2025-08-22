@@ -3,8 +3,12 @@ import defaultImg from "../../vendor/images/author-img.jpg";
 
 export default function About() {
   return (
-    <div className="about__container">
-      <img src={defaultImg} alt="" className="about__img" />
+    <section className="about__container">
+      <img
+        src={defaultImg}
+        alt="Portrait of Jose Canela"
+        className="about__img"
+      />
       <div className="about__information-container">
         <h2 className="about__title">About the author</h2>
         <p className="about__description">
@@ -23,6 +27,6 @@ export default function About() {
           site in the link below to view all that they offer.
         </p>
       </div>
-    </div>
+    </section>
   );
 }

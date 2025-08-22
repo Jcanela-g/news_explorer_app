@@ -76,7 +76,7 @@
 }
 
 .news-card__save {
-  background: url("../../vendor/images/save-icon.png") center no-repeat;
+  background: url("../../vendor/images/save-icon.svg") center no-repeat;
   width: 40px;
   height: 40px;
   padding: 0;
@@ -126,11 +126,11 @@
 }
 
 .news-card__save_saved {
-  background-image: url("../../vendor/images/save-icon-marked.png");
+  background-image: url("../../vendor/images/save-icon-marked.svg");
 }
 
 .news-card__save:hover {
-  background-image: url("../../vendor/images/save-icon-hover.png");
+  background-image: url("../../vendor/images/save-icon-hover.svg");
 }
 
 .news-card__chip {
@@ -150,7 +150,7 @@
 }
 
 .news-card__delete {
-  background: url("../../vendor/images/delete-icon.png") center no-repeat, #fff;
+  background: url("../../vendor/images/delete-icon.svg") center no-repeat, #fff;
   width: 40px;
   height: 40px;
   border: none;
@@ -160,7 +160,7 @@
 }
 
 .news-card__delete:hover {
-  background-image: url("../../vendor/images/delete-icon-hover.png");
+  background-image: url("../../vendor/images/delete-icon-hover.svg");
 }
 
 .news-card__delete:hover + .news-card__tooltip {

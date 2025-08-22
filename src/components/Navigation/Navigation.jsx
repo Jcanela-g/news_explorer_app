@@ -33,7 +33,7 @@ export default function Navigation({
 
   return (
     <>
-      <div className={`navigation navigation__${theme}`}>
+      <nav className={`navigation navigation__${theme}`}>
         <NavLink to="/" className="navigation__title">
           NewsExplorer
         </NavLink>
@@ -55,7 +55,7 @@ export default function Navigation({
             <span className="navigation__user">{user?.name || "User"}</span>
             <img
               src={logoutSrc}
-              alt="logout"
+              alt="logout button"
               className="navigation__logout-icon"
             />
           </button>
@@ -71,7 +71,7 @@ export default function Navigation({
           }`}
           onClick={toggle}
         ></button>
-      </div>
+      </nav>
 
       {open && (
         <>
