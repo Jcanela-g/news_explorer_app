@@ -9,6 +9,7 @@ export default function ModalWithForm({
   onClose,
   onSubmit,
   footer,
+  isValid = true,
 }) {
   useEffect(() => {
     if (!isOpen) return;
@@ -38,9 +39,9 @@ export default function ModalWithForm({
           {title}
         </h2>
         <button type="button" onClick={onClose} className="modal__close" />
-        <form onSubmit={onSubmit} className="modal__form">
+        <form onSubmit={onSubmit} className="modal__form" noValidate>
           {children}
-          <button type="submit" className="modal__submit">
+          <button type="submit" className="modal__submit" disabled={!isValid}>
             {buttonText}
           </button>
           {footer && <div className="modal__footer">{footer}</div>}

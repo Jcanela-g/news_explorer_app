@@ -104,7 +104,6 @@
 }
 
 .modal__submit:hover {
-  background-color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
 }
 
@@ -134,6 +133,22 @@
   font-size: 18px;
   line-height: 100%;
   padding-bottom: 23px;
+}
+
+.modal__error {
+  font-family: "Inter", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: rgba(255, 0, 0, 1);
+  margin: 0;
+}
+
+.modal__submit:disabled {
+  color: rgba(182, 188, 191, 1);
+  background-color: rgba(230, 232, 235, 1);
+  cursor: default;
+  pointer-events: none;
 }
 
 @media (max-width: 650px) {

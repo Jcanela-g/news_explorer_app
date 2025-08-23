@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 export default function LoginModal({
@@ -6,10 +7,32 @@ export default function LoginModal({
   onSwitchToRegister,
   onSubmit,
 }) {
+  const [values, setValues] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({ email: "", password: "" });
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setValues({ email: "", password: "" });
+      setErrors({ email: "", password: "" });
+      setIsValid(false);
+    }
+  }, [isOpen]);
+
+  const handleChange = (e) => {
+    const { name, value, form, validationMessage, validity } = e.target;
+    setValues((v) => ({ ...v, [name]: value }));
+    setErrors((er) => ({
+      ...er,
+      [name]: validity.valid ? "" : validationMessage,
+    }));
+    setIsValid(form.checkValidity());
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    onSubmit?.({ email: fd.get("email"), password: fd.get("password") });
+    if (!isValid) return;
+    onSubmit?.({ email: values.email, password: values.password });
   };
 
   return (
@@ -19,6 +42,7 @@ export default function LoginModal({
       buttonText="Sign in"
       onClose={onClose}
       onSubmit={handleSubmit}
+      isValid={isValid}
       footer={
         <div className="modal__switch">
           <span>or&nbsp;</span>
@@ -40,7 +64,12 @@ export default function LoginModal({
           name="email"
           placeholder="Enter email"
           required
+          value={values.email}
+          onChange={handleChange}
         />
+        <span id="login-email-error" className="modal__error">
+          {errors.email}
+        </span>
       </label>
       <label className="modal__label">
         Password
@@ -50,7 +79,13 @@ export default function LoginModal({
           name="password"
           placeholder="Enter password"
           required
+          minLength={4}
+          value={values.password}
+          onChange={handleChange}
         />
+        <span id="login-password-error" className="modal__error">
+          {errors.password}
+        </span>
       </label>
     </ModalWithForm>
   );
